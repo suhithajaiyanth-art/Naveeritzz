@@ -1427,7 +1427,7 @@ END:VCALENDAR`;
                     onClick={() =>
                       typeof window !== "undefined" &&
                       window.open(
-                        "https://maps.google.com/?q=Bhavani+Bus+Stand",
+                        "https://maps.app.goo.gl/SVQzCopCoDHJwQG98",
                         "_blank",
                         "noopener,noreferrer",
                       )
