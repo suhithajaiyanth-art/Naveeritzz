@@ -3,7 +3,7 @@ import path from "node:path";
 
 const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -32,5 +32,5 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default nextConfig as NextConfig;
 // Orchids restart: 1768151044721
