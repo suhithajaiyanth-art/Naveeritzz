@@ -1076,6 +1076,16 @@ END:VCALENDAR`;
                         backgroundColor: "var(--color-darkTeal)",
                         boxShadow: "0 10px 15px -3px rgba(27, 60, 64, 0.2)",
                       }}
+                      onClick={() =>
+                        typeof window !== "undefined" &&
+                        window.open(
+                          `https://maps.google.com/?q=${encodeURIComponent(
+                            event.loc,
+                          )}`,
+                          "_blank",
+                          "noopener,noreferrer",
+                        )
+                      }
                       className="w-full hover:bg-[#2A5257] text-white rounded-full h-14 tracking-[0.3em] text-[10px] font-bold transition-all duration-500"
                     >
                       GET DIRECTIONS
@@ -1330,14 +1340,11 @@ END:VCALENDAR`;
                 </div>
                 <Button
                   onClick={() =>
-                    window.parent.postMessage(
-                      {
-                        type: "OPEN_EXTERNAL_URL",
-                        data: {
-                          url: "https://maps.google.com/?q=Bhavani+Lakshmi+Nagar+Bypass",
-                        },
-                      },
-                      "*",
+                    typeof window !== "undefined" &&
+                    window.open(
+                      "https://maps.google.com/?q=Bhavani+Lakshmi+Nagar+Bypass",
+                      "_blank",
+                      "noopener,noreferrer",
                     )
                   }
                   style={{ backgroundColor: "var(--color-darkTeal)" }}
@@ -1403,14 +1410,11 @@ END:VCALENDAR`;
                 <div className="grid grid-cols-2 gap-3">
                   <Button
                     onClick={() =>
-                      window.parent.postMessage(
-                        {
-                          type: "OPEN_EXTERNAL_URL",
-                          data: {
-                            url: "https://maps.google.com/?q=Erode+Junction+Railway+Station",
-                          },
-                        },
-                        "*",
+                      typeof window !== "undefined" &&
+                      window.open(
+                        "https://maps.google.com/?q=Erode+Junction+Railway+Station",
+                        "_blank",
+                        "noopener,noreferrer",
                       )
                     }
                     style={{ backgroundColor: "var(--color-darkTeal)" }}
@@ -1421,14 +1425,11 @@ END:VCALENDAR`;
                   </Button>
                   <Button
                     onClick={() =>
-                      window.parent.postMessage(
-                        {
-                          type: "OPEN_EXTERNAL_URL",
-                          data: {
-                            url: "https://maps.google.com/?q=Bhavani+Bus+Stand",
-                          },
-                        },
-                        "*",
+                      typeof window !== "undefined" &&
+                      window.open(
+                        "https://maps.google.com/?q=Bhavani+Bus+Stand",
+                        "_blank",
+                        "noopener,noreferrer",
                       )
                     }
                     style={{
