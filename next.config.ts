@@ -16,11 +16,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Remove custom `outputFileTracingRoot` which can point outside
-  // the project on Vercel and cause duplicated path issues
-  // (e.g. "/vercel/path0/vercel/path0/.next/..."). Using the
-  // default ensures `.next/routes-manifest.json` is generated
-  // inside the project build output.
+  outputFileTracingRoot: path.resolve(__dirname, '../../'),
   typescript: {
     ignoreBuildErrors: true,
   },
