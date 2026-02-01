@@ -977,6 +977,7 @@ END:VCALENDAR`;
                 time: "07:00 PM onwards",
                 venue: "KMP Mahal",
                 loc: "Petharan Thottam, Bhavani",
+                mapUrl: "https://maps.app.goo.gl/EqvFrC7BDTHX5Weg6",
                 icon: <Sun size={32} style={{ color: "var(--color-gold)" }} />,
                 img: "/KMPMahal.jpeg",
               },
@@ -986,6 +987,7 @@ END:VCALENDAR`;
                 time: "07:00 AM - 08:30 AM",
                 venue: "Sangameswarar Temple",
                 loc: "Kooduthurai, Bhavani",
+                mapUrl: "https://maps.app.goo.gl/vLYJevCTn3LBUVBFA",
                 icon: (
                   <Heart
                     size={24}
@@ -1077,15 +1079,13 @@ END:VCALENDAR`;
                         boxShadow: "0 10px 15px -3px rgba(27, 60, 64, 0.2)",
                       }}
                       onClick={() =>
-                        typeof window !== "undefined" &&
-                        window.open(
-                          `https://maps.google.com/?q=${encodeURIComponent(
-                            event.loc,
-                          )}`,
-                          "_blank",
-                          "noopener,noreferrer",
-                        )
-                      }
+                          typeof window !== "undefined" &&
+                          window.open(
+                            event.mapUrl ?? `https://maps.google.com/?q=${encodeURIComponent(event.loc)}`,
+                            "_blank",
+                            "noopener,noreferrer",
+                          )
+                        }
                       className="w-full hover:bg-[#2A5257] text-white rounded-full h-14 tracking-[0.3em] text-[10px] font-bold transition-all duration-500"
                     >
                       GET DIRECTIONS
@@ -1339,10 +1339,10 @@ END:VCALENDAR`;
                   </p>
                 </div>
                 <Button
-                  onClick={() =>
+                    onClick={() =>
                     typeof window !== "undefined" &&
                     window.open(
-                      "https://maps.google.com/?q=Bhavani+Lakshmi+Nagar+Bypass",
+                      "https://maps.app.goo.gl/ff73UqCj73pwbvQ86",
                       "_blank",
                       "noopener,noreferrer",
                     )
@@ -1412,7 +1412,7 @@ END:VCALENDAR`;
                     onClick={() =>
                       typeof window !== "undefined" &&
                       window.open(
-                        "https://maps.google.com/?q=Erode+Junction+Railway+Station",
+                        "https://maps.app.goo.gl/gPCNpQGecXXuu1Pw9",
                         "_blank",
                         "noopener,noreferrer",
                       )
