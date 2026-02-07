@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { getMessages, addMessage } from "@/lib/db";
 
 interface Wish {
   id: number;
@@ -9,24 +8,9 @@ interface Wish {
   date: string;
 }
 
-const dataFile = path.join(process.cwd(), "data", "messages.json");
-
-async function readMessages(): Promise<Wish[]> {
-  try {
-    const data = await fs.readFile(dataFile, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-async function writeMessages(messages: Wish[]): Promise<void> {
-  await fs.writeFile(dataFile, JSON.stringify(messages, null, 2));
-}
-
 export async function GET() {
   try {
-    const messages = await readMessages();
+    const messages = getMessages();
     return NextResponse.json(messages);
   } catch (error) {
     console.error("Error reading messages:", error);
@@ -45,28 +29,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const messages = await readMessages();
-    
-    const newWish: Wish = {
-      id: Date.now(),
-      name: name.trim(),
-      message: message.trim(),
-      date: new Date().toLocaleDateString("en-US", {
+    const newWish = addMessage(
+      name.trim(),
+      message.trim(),
+      new Date().toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
-        day: "numeric"
+        day: "numeric",
       })
-    };
-
-    const updatedMessages = [newWish, ...messages];
-    await writeMessages(updatedMessages);
+    );
 
     return NextResponse.json(newWish, { status: 201 });
   } catch (error) {
     console.error("Error saving message:", error);
-    return NextResponse.json(
-      { error: "Failed to save message" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to save message" }, { status: 500 });
   }
 }
